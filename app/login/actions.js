@@ -8,7 +8,7 @@ import { createClient } from "@/utils/supabase/server";
 export async function login(formData) {
   const supabase = await createClient();
 
-  console.log(formData);
+  //console.log(formData);
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -20,11 +20,10 @@ export async function login(formData) {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    redirect("/error");
+    return { success: false, error };
   }
-
   revalidatePath("/", "layout");
-  redirect("/");
+  return { success: true };
 }
 
 export async function signup(formData) {

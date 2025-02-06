@@ -5,6 +5,8 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Flex, Layout } from "antd";
 
 import { Header, Content, Footer } from "antd/es/layout/layout";
+import Navbar from "@/components/Navbar";
+import Logo from "@/public/images/logo400x400.svg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,9 +26,9 @@ export const metadata = {
 export const headerStyle = {
   textAlign: "center",
   color: "#fff",
-  height: 64,
-  paddingInline: 48,
-  lineHeight: "64px",
+  width: "100%",
+  height: "auto",
+  paddingInline: 10,
   backgroundColor: "#4096ff",
 };
 export const footerStyle = {
@@ -35,6 +37,24 @@ export const footerStyle = {
   backgroundColor: "#4096ff",
 };
 
+export const menus = [
+  {
+    name: "Home",
+    link: "/",
+    icon: "",
+  },
+  {
+    name: "About",
+    link: "/about",
+    icon: "",
+  },
+  {
+    name: "Examples",
+    link: "/examples",
+    icon: "",
+  },
+];
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es-MX">
@@ -42,8 +62,10 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AntdRegistry>
-          <Layout>
-            <Header style={headerStyle}>Header</Header>
+          <Layout style={{ minHeight: "100vh" }}>
+            <Header style={headerStyle}>
+              <Navbar menus={menus} logo={Logo} />
+            </Header>
             <Content>{children}</Content>
             <Footer style={footerStyle}>Footer</Footer>
           </Layout>
