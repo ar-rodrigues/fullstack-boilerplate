@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+const { headers } = require("next/headers");
 
 export async function login(formData) {
   const supabase = await createClient();
@@ -44,4 +45,18 @@ export async function signup(formData) {
 
   revalidatePath("/", "layout");
   redirect("/");
+}
+
+export async function resetPassword(userEmail, baseUrl) {
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(userEmail, {
+    redirectTo: `${baseUrl}/reset-password`,
+  });
+
+  if (error) {
+    return { success: false, error };
+  }
+
+  return { success: true };
 }
