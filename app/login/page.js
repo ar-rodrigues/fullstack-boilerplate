@@ -7,7 +7,7 @@ import Logo from "@/components/Logo";
 import ResetPassword from "@/components/ResetPassword";
 import Login from "@/components/Login";
 
-export default function LoginPage() {
+export default function ResetPage() {
   const [isResetPassword, setIsResetPassword] = useState(false);
 
   //const viewportWidth = window.innerWidth;

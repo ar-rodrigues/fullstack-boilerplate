@@ -9,7 +9,7 @@ const { headers } = require("next/headers");
 export async function login(formData) {
   const supabase = await createClient();
 
-  //console.log(formData);
+  console.log(formData);
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -21,6 +21,7 @@ export async function login(formData) {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
+    console.log(error);
     return { success: false, error };
   }
   revalidatePath("/", "layout");
@@ -51,7 +52,7 @@ export async function resetPassword(userEmail, baseUrl) {
   const supabase = await createClient();
 
   const { error } = await supabase.auth.resetPasswordForEmail(userEmail, {
-    redirectTo: `${baseUrl}/reset-password`,
+    redirectTo: `${baseUrl}/auth/reset`,
   });
 
   if (error) {
