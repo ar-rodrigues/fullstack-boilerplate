@@ -14,7 +14,7 @@ export default function ResetPassword({ setIsResetPassword, isResetPassword }) {
   };
 
   const onResetPassword = async (values) => {
-    console.log(values);
+    //console.log(values);
     try {
       const baseUrl = window.location.origin;
       const passwordReseted = await resetPassword(values.email, baseUrl);
@@ -36,6 +36,7 @@ export default function ResetPassword({ setIsResetPassword, isResetPassword }) {
         status="success"
         title="Check your email"
         subTitle="We've sent you an email with a link to reset your password."
+        className="mt-5 pt-5"
         extra={[
           <Button
             type="primary"
