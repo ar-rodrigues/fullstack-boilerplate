@@ -24,7 +24,7 @@ export default function LoginPage() {
       } = await supabase.auth.getUser();
 
       if (user) {
-        router.push("/private");
+        router.push("/dashboard");
       }
     };
 

@@ -1,7 +1,7 @@
 "use client";
 import { Form, Input, Button, Typography, Space, Progress } from "antd";
 import { useState, useEffect } from "react";
-import { newPassword } from "@/app/reset/actions";
+import { newPassword } from "@/app/(auth)/reset/actions";
 import zxcvbn from "zxcvbn";
 import generatePassword from "generate-password";
 import "@ant-design/v5-patch-for-react-19";
@@ -52,7 +52,7 @@ export default function ConfirmPassword() {
       const result = await newPassword({ password, code });
       if (result.success) {
         console.log(result);
-        router.push("/private");
+        router.push("/dashboard");
       } else {
         form.setFields([
           {

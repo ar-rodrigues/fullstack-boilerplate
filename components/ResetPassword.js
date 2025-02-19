@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Spin, Flex, Result } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { resetPassword } from "@/app/login/actions";
+import { resetPassword } from "@/app/(auth)/login/actions";
 import { useRouter } from "next/navigation";
 
 export default function ResetPassword({ setIsResetPassword, isResetPassword }) {

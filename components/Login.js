@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { login, signup } from "@/app/login/actions";
+import { login, signup } from "@/app/(auth)/login/actions";
 import { Form, Input, Button, Spin, Flex } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ export default function Login({ setIsResetPassword }) {
       let result = await login(values);
       if (result.success) {
         setLoading(false);
-        router.push("/private");
+        router.push("/dashboard");
       } else {
         setLoading(false);
         setErrorMessage("Incorrect email or password.");

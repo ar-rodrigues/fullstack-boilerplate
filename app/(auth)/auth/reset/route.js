@@ -10,13 +10,18 @@ export async function GET(request) {
   if (token_hash && type) {
     const supabase = await createClient();
 
+    console.log("RESET TOKEN:", token_hash, "RESET TYPE", type);
+
     const {
-      data: { user },
+      data, //: { user },
       error,
     } = await supabase.auth.verifyOtp({
       type,
       token_hash,
     });
+
+    console.log("RESET DATA", data);
+    console.log("RESET ERR", error);
 
     if (!error) {
       // redirect user to specified redirect URL or root of app

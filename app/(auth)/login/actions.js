@@ -9,7 +9,7 @@ const { headers } = require("next/headers");
 export async function login(formData) {
   const supabase = await createClient();
 
-  console.log(formData);
+  //console.log(formData);
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
