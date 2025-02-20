@@ -3,6 +3,8 @@
 import React from "react";
 import { Flex, Col, Row } from "antd";
 import Image from "next/image";
+import { useAtomValue } from "jotai";
+import { navbarMenus, logoImage } from "@/utils/atoms";
 
 const containerStyle = {
   padding: "5px",
@@ -25,7 +27,10 @@ const logoStyle = {
   height: "100%",
 };
 
-export default function Navbar({ menus, logo }) {
+export default function Navbar() {
+  const menus = useAtomValue(navbarMenus);
+  const logo = useAtomValue(logoImage);
+
   if (!menus) {
     throw new Error("Navbar: menus is required");
   } else if (menus.length < 1) {

@@ -7,7 +7,6 @@ import { Flex, Layout } from "antd";
 
 import { Header, Content, Footer } from "antd/es/layout/layout";
 import Navbar from "@/components/Navbar";
-import Logo from "@/public/images/logo400x400.svg";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,24 +37,6 @@ export const footerStyle = {
   backgroundColor: "#4096ff",
 };
 
-export const menus = [
-  {
-    name: "Home",
-    link: "/",
-    icon: "",
-  },
-  {
-    name: "About",
-    link: "/about",
-    icon: "",
-  },
-  {
-    name: "Examples",
-    link: "/examples",
-    icon: "",
-  },
-];
-
 export default function AuthLayout({ children }) {
   return (
     <html lang="es-MX">
@@ -65,7 +46,7 @@ export default function AuthLayout({ children }) {
         <AntdRegistry>
           <Layout style={{ minHeight: "100vh" }}>
             <Header style={headerStyle}>
-              <Navbar menus={menus} logo={Logo} />
+              <Navbar />
             </Header>
             <Content>{children}</Content>
             <Footer style={footerStyle}>Footer</Footer>
